@@ -5,14 +5,14 @@ const router = express.Router();
 const controller = require('./controllers.js');
 
 //set routes
-router.use('/products', function(req, res, next) {
+router.use(function(req, res, next) {
   console.log(req.url, '@', Date.now());
   next();
 });
 
 router
   .route('/')
-  .get(controller.getProducts );
+  .get(controller.getProducts);
 
 router
   .route('/:product_id')

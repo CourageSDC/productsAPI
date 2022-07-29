@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "test": "jest",
-    "initdb": "psql -U danielchu productAPI < db/schema.sql"
+    "initdb": "psql -U danielchu productAPI< db/schema.sql"
   },
   "repository": {
     "type": "git",
