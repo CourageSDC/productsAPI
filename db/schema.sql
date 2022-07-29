@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS "productAPI";
 
-DROP TABLE IF EXISTS product ,... CASCADE;
+DROP TABLE IF EXISTS product CASCADE;
 DROP TABLE IF EXISTS features;
-DROP TABLE IF EXISTS styles ,... CASCADE;
+DROP TABLE IF EXISTS styles CASCADE;
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS skus;
 DROP TABLE IF EXISTS related;
@@ -75,8 +75,8 @@ CSV HEADER;
 CREATE TABLE photos (
   id numeric NOT NULL,
   styleId numeric NOT NULL,
-  url TEXT NOT NULL,
-  thumbnail_url TEXT NOT NULL,
+  url TEXT COLLATE pg_catalog."default" NOT NULL,
+  thumbnail_url TEXT COLLATE pg_catalog."default" NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT style_ID FOREIGN KEY (styleId)
     REFERENCES styles (id) MATCH SIMPLE

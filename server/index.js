@@ -5,7 +5,7 @@ const productRouter = require('./routes.js');
 
 const app = express();
 app.use(express.json());
-app.use('/products', productRouter);
+app.use(productRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(PORT)

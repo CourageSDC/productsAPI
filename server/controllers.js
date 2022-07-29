@@ -3,6 +3,9 @@ const axios = require('axios');
 
 module.exports = {
   getProducts: (req, res) => {
+    let {page, count} = req.params;
+    let limit = count || 5;
+    let offset = (page - 1) * limit || 0;
     db.getProducts()
       .then(response=> res.status(200).send(response.data))
       .catch(err=> res.status(400))
