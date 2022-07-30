@@ -49,6 +49,7 @@ COPY features(id, product_id, feature, value)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/features.csv'
 DELIMITER ','
 CSV HEADER;
+CREATE INDEX prod_idx on features (product_id);
 
 -- Table 'styles'
 
@@ -69,6 +70,7 @@ ALTER TABLE styles
 COPY styles(id, product_id, name, sale_price, original_price, default_style)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/styles.csv'
 CSV HEADER;
+CREATE INDEX style_idx ON styles(product_id);
 
 -- Table 'photos'
 
@@ -88,6 +90,7 @@ COPY photos(id, styleId, url, thumbnail_url)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/photos.csv'
 DELIMITER ','
 CSV HEADER;
+CREATE INDEX photo_idx ON photos (styleId);
 
 -- Table 'skus'
 
@@ -107,6 +110,7 @@ COPY skus(id, styleId, size, quantity)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/skus.csv'
 DELIMITER ','
 CSV HEADER;
+CREATE INDEX sku_idx ON skus (styleId);
 
 -- Table 'related'
 
@@ -125,3 +129,4 @@ COPY related(id, current_product_id, related_product_id)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/related.csv'
 DELIMITER ','
 CSV HEADER;
+CREATE INDEX related_idx ON related (current_product_id);

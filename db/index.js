@@ -38,7 +38,7 @@ module.exports = {
       .catch(err = console.log('error getting product info from db'))
   },
 
-  getStyles: async (id) => {
+  getStyles: (id) => {
     let queryString = `SELECT json_build_object(
       'product_id', styles.product_id,
       'results', json_agg(
@@ -58,15 +58,15 @@ module.exports = {
             skus.id, json_build_object(
               'size', skus.size,
               'quantity', skus.quantity
-          )) FROM skus
+          )) AS skus FROM skus
           WHERE skus.styleId = styles.id
           GROUP BY styles.id)
         ))
-      ) AS styles
+      )
       FROM styles
       WHERE styles.product_id = ${id}
       GROUP BY styles.product_id`;
-    return await pool.query(queryString)
+    return pool.query(queryString)
       .then(res => res.rows[0])
       .catch(err => console.log('error getting styles from db'))
   },
@@ -82,3 +82,5 @@ module.exports = {
       .catch(err => console.log('error getting products from db'))
   }
 };
+
+

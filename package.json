@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server/index.js",
     "test": "jest",
-    "initdb": "psql -U danielchu productAPI< db/schema.sql"
+    "test:watch": "npm run test -- --watch",
+    "initdb": "psql -U danielchu productsAPI < db/schema.sql"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.18.1",
     "express-promise-router": "^4.1.1",
     "jest": "^28.1.3",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "supertest": "^6.2.4"
   }
 }
