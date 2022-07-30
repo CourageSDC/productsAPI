@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 // const Promise = require('bluebird');
 const pool = new Pool({
   user: 'danielchu',
-  database: 'productAPI',
+  database: 'productsAPI',
   host: 'localhost',
   password: '',
   port: 5432,
@@ -35,7 +35,7 @@ module.exports = {
       GROUP by product.id`;
     return pool.query(queryString)
       .then(res => res.rows[0])
-      .catch(err = console.log('error getting product info from db'))
+      .catch(err => console.log('error getting product info from db'))
   },
 
   getStyles: (id) => {
@@ -62,7 +62,7 @@ module.exports = {
           WHERE skus.styleId = styles.id
           GROUP BY styles.id)
         ))
-      )
+      )AS styles
       FROM styles
       WHERE styles.product_id = ${id}
       GROUP BY styles.product_id`;

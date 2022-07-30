@@ -10,5 +10,3 @@ app.use('/products', productRouter);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
 console.log(`Big brother is listening at http://localhost:${PORT}`);
-
-module.exports = app;

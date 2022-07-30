@@ -12,6 +12,7 @@ module.exports = {
   },
 
   getProductById: (req, res) => {
+    console.log(req.params, req.query)
     let productID = req.params.product_id;
     db.getProductById(productID)
       .then(response=> res.status(200).send(response.product))
