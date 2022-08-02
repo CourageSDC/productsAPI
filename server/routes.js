@@ -6,7 +6,7 @@ const controller = require('./controllers.js');
 
 //set routes
 router.use(function(req, res, next) {
-  console.log(req.url, '@', Date.now());
+  // console.log(req.url, '@', Date.now());
   next();
 });
 

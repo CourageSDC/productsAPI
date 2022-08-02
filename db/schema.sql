@@ -57,7 +57,7 @@ CREATE TABLE styles (
   id numeric NOT NULL,
   product_id numeric NOT NULL,
   name TEXT NOT NULL,
-  sale_price TEXT NOT NULL,
+  sale_price TEXT,
   original_price numeric NOT NULL,
   default_style BOOLEAN NOT NULL,
   PRIMARY KEY (id),
@@ -69,6 +69,8 @@ ALTER TABLE styles
   OWNER to danielchu;
 COPY styles(id, product_id, name, sale_price, original_price, default_style)
 FROM '/Users/danielchu/SEC/retail-app_SDC/API/Products/raw_data/styles.csv'
+DELIMITER ','
+NULL AS 'null'
 CSV HEADER;
 CREATE INDEX style_idx ON styles(product_id);
 
@@ -77,8 +79,8 @@ CREATE INDEX style_idx ON styles(product_id);
 CREATE TABLE photos (
   id numeric NOT NULL,
   styleId numeric NOT NULL,
-  url TEXT COLLATE pg_catalog."default" NOT NULL,
-  thumbnail_url TEXT COLLATE pg_catalog."default" NOT NULL,
+  url TEXT NOT NULL,
+  thumbnail_url TEXT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT style_ID FOREIGN KEY (styleId)
     REFERENCES styles (id) MATCH SIMPLE

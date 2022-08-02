@@ -12,7 +12,6 @@ module.exports = {
   },
 
   getProductById: (req, res) => {
-    console.log(req.params, req.query)
     let productID = req.params.product_id;
     db.getProductById(productID)
       .then(response=> res.status(200).send(response.product))
@@ -22,7 +21,7 @@ module.exports = {
   getStyles: (req, res) => {
     let productID = req.params.product_id;
     db.getStyles(productID)
-      .then(response => res.status(200).send(response.styles))
+      .then(response => res.status(200).send(response))
       .catch(err => res.status(400));
   },
 
