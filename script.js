@@ -12,7 +12,7 @@ export let options = {
       //note: 1000 iterations per second
       duration: '60s',
       preAllocatedVUs: 20,
-      maxVUs: 200
+      maxVUs: 1000
     },
   },
 

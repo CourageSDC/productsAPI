@@ -7,6 +7,8 @@ const productRouter = require('./routes.js');
 const app = express();
 app.use(compression());
 app.use(express.json());
+
+
 app.use('/products', productRouter);
 
 const PORT = process.env.PORT || 3001;
