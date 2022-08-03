@@ -1,11 +1,12 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 // const Promise = require('bluebird');
 const pool = new Pool({
-  user: 'danielchu',
-  database: 'productsAPI',
-  host: 'localhost',
-  password: '',
-  port: 5432,
+  user: process.ENV.PGUSER,
+  host: process.ENV.PGHOST,
+  database: process.ENV.PGDATABASE,
+  password: process.ENV.PGPASSWORD,
+  port: process.ENV.PGPORT,
 });
 
 module.exports = {
